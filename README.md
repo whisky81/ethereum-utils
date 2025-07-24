@@ -1,2 +1,2 @@
-## Availabel Utils
+## Available Utils
 - EIP712 Signing
