@@ -1,0 +1,185 @@
+/* ==================== Global Reset & Base ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* ==================== AppBar ==================== */
+.appbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f172a;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 2rem;
+}
+
+/* ==================== Logo ==================== */
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ==================== Navigation Links ==================== */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #38bdf8;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #38bdf8;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ==================== User Info ==================== */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  white-space: nowrap;
+}
+
+/* ---- Balances ---- */
+.balances {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.balances span {
+  position: relative;
+  padding-right: 1rem;
+}
+
+.balances span::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 1px;
+  background-color: #475569;
+}
+
+.balances span:last-child {
+  padding-right: 0;
+}
+
+.balances span:last-child::after {
+  display: none;
+}
+
+/* ---- Profile ---- */
+.user-profile {
+  display: flex;
+  align-items: center;
+  background-color: #1e293b;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.user-profile:hover {
+  background-color: #334155;
+}
+
+.user-profile img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-profile span {
+  font-size: 0.85rem;
+  color: #e2e8f0;
+}
+
+.dropdown-arrow {
+  font-size: 0.75rem;
+  margin-left: 0.2rem;
+  color: #cbd5e1;
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 768px) {
+  .appbar {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .user-info {
+    align-self: stretch;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  .balances {
+    flex: 1;
+  }
+
+  .user-profile {
+    margin-left: auto;
+  }
+}
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}

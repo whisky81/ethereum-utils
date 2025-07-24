@@ -1,0 +1,99 @@
+.eip712-message-data {
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.eip712-message-data h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.eip712-message-data p {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 1rem;
+}
+
+.eip712-message-data h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 1rem 0 0.5rem;
+}
+
+.eip712-message-data select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  transition: border-color 0.2s ease;
+}
+
+.eip712-message-data select:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+}
+
+/* Struct fields rendering */
+.struct-fields {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+}
+
+.data-input-field {
+  margin-bottom: 1rem;
+}
+
+.data-input-field label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.data-input-field input,
+.data-input-field select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.data-input-field input:focus,
+.data-input-field select:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+}
+
+/* Nested struct rendering */
+.nested-struct {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-left: 4px solid #94a3b8;
+  background-color: #e2e8f0;
+  border-radius: 6px;
+}
+
+.nested-struct h5 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #334155;
+  font-weight: 600;
+}

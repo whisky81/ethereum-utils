@@ -1,0 +1,23 @@
+/* ==================== Error Page ==================== */
+.error-page {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #fef2f2; /* light red background */
+  color: #b91c1c; /* red-700 */
+  border: 1px solid #fca5a5; /* red-300 */
+  border-radius: 0.75rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.error-page h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.error-page p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
