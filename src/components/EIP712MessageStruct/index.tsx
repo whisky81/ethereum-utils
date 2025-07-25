@@ -2,6 +2,16 @@ import { useState } from 'react';
 import './style.css';
 import Account from '../../utils/Account';
 
+function IntegerRange({ type }: { type: string }) {
+  return (
+    <>
+      {Array.from({ length: 256 }, (_, i) => i + 1).map((i) => (
+        <option key={i} value={`${type}${i}`}>{`${type}${i}`}</option>
+      ))}
+    </>
+  );
+}
+
 function EIP712MessageStruct({
   typedDataStructures,
   setTypedDataStructures
@@ -32,6 +42,20 @@ function EIP712MessageStruct({
     delete updated[structName];
     setTypedDataStructures(updated);
   };
+
+  const updateStructType = (structName: string, fields: Array<{ name: string, type: string }>, index: number, key: string, value: string) => {
+    const updated = [...fields];
+    if (key === 'name') {
+      updated[index].name = value;
+    } else {
+      updated[index].type = value;
+    }
+    setTypedDataStructures(prev => ({
+      ...prev,
+      [structName]: updated
+    }));
+
+  }
 
   return (
     <div className="eip712-message">
@@ -76,37 +100,21 @@ function EIP712MessageStruct({
                   value={field.name}
                   required
                   onChange={e => {
-                    const updated = [...fields];
-                    updated[j].name = e.target.value;
-                    setTypedDataStructures(prev => ({
-                      ...prev,
-                      [structName]: updated
-                    }));
+                    updateStructType(structName, fields, j, 'name', e.target.value);
                   }}
                 />
                 <select
                   name="type"
                   value={field.type}
                   onChange={(e) => {
-                    const updated = [...fields];
-                    updated[j].type = e.target.value;
-                    setTypedDataStructures(prev => ({
-                      ...prev,
-                      [structName]: updated
-                    }));
+                    updateStructType(structName, fields, j, 'type', e.target.value);
                   }}
                 >
                   <option value="string">string</option>
                   <option value="address">address</option>
                   <option value="bytes">bytes</option>
-                  {Array.from({ length: 256 }, (_, i) => i + 1).map((i) => (
-                    <option key={i} value={`uint${i}`}>{`uint${i}`}</option>
-                  ))}
-
-                  {Array.from({ length: 256 }, (_, i) => i + 1).map((i) => (
-                    <option key={i} value={`int${i}`}>{`int${i}`}</option>
-                  ))}
-
+                  <IntegerRange type="uint" />
+                  <IntegerRange type="int" />
                   <option value="bool">bool</option>
                   {Object.keys(typedDataStructures).map(type => {
                     if (type !== structName) {

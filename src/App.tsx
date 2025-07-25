@@ -16,8 +16,8 @@ function App() {
   return (<BrowserRouter>
     <AppBar account={account}/>
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/eip712" element={<EIP712 />} />
+      <Route path="/ethereum-utils" element={<Home />} />
+      <Route path="/ethereum-utils/eip712" element={<EIP712 />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>);

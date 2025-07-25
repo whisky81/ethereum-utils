@@ -1,4 +1,5 @@
-
+import './style.css';
+import Error from '../../pages/Error';
 
 function EIP712ParamsAndSignature({
     params,
@@ -11,6 +12,14 @@ function EIP712ParamsAndSignature({
     setStep: React.Dispatch<React.SetStateAction<number>>;
     setParamsAndSignature: React.Dispatch<React.SetStateAction<{ params: string, signature: string }>>;
 }) {
+    if (!params || !signature) {
+        return (
+            <div className="error-page">
+                <Error error="No params or signature available" />
+            </div>
+        );
+    }
+
     const copyToClipboard = async (text: string) => {
         try {
             await navigator.clipboard.writeText(text);
@@ -21,7 +30,6 @@ function EIP712ParamsAndSignature({
     return (
         <div className="result-section">
             <h3>Signature Result</h3>
-
             <p><strong>Params:</strong></p>
             <pre className="params-box">
                 {(() => {
@@ -38,7 +46,7 @@ function EIP712ParamsAndSignature({
             <div className="signature-box">
                 <code>{signature}</code>
                 <button onClick={() => copyToClipboard(signature)} className="copy-button">
-                    Copy
+                    📋
                 </button>
             </div>
 

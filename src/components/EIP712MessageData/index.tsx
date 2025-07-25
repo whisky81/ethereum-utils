@@ -1,33 +1,7 @@
-// import { useState } from "react";
 import './style.css';
 type Field = { name: string; type: string };
 type StructsMap = Record<string, Field[]>;
-
-function updateMessage(
-  message: Record<string, any>, path: string[], name: string, value: any
-): Record<string, any> {
-  const updatedMessage = structuredClone(message);
-  let current = updatedMessage;
-
-  for (const key of path) {
-    if (!current[key]) current[key] = {};
-    current = current[key];
-  }
-
-  current[name] = value;
-  return updatedMessage;
-}
-
-function getValue(message: Record<string, any>, path: string[], name: string): any {
-  let current = message;
-  for (const key of path) {
-    if (!current[key]) return undefined;
-    current = current[key];
-  }
-  return current[name];
-}
-
-
+import TypedDataStructure from '../../utils/TypedDataStructure';
 
 function StructFieldsRenderer({
   structFields,
@@ -45,7 +19,7 @@ function StructFieldsRenderer({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    const updatedMessage = updateMessage(message, path, name, value);
+    const updatedMessage = TypedDataStructure.updateStructureField(message, path, name, value);
     setMessage(updatedMessage);
   };
 
@@ -59,7 +33,7 @@ function StructFieldsRenderer({
               <input
                 type="text"
                 placeholder={`Enter ${name}`}
-                value={getValue(message, path, name) || ''}
+                value={TypedDataStructure.getStructureFieldValue(message, path, name) || ''}
                 name={name}
                 onChange={handleChange}
               />
@@ -74,7 +48,7 @@ function StructFieldsRenderer({
               <input
                 type="number"
                 placeholder={`Enter ${name}`}
-                value={getValue(message, path, name) || 0}
+                value={TypedDataStructure.getStructureFieldValue(message, path, name) || ''}
                 name={name}
                 onChange={handleChange}
               />

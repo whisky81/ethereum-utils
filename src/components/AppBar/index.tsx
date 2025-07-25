@@ -29,7 +29,7 @@ function AppBar({ account }: { account: Account }) {
       <div className="left-section">
         <div className="logo">Ethereum Utils</div>
         <div className="nav-links">
-          <NavLink to="/" end>Home</NavLink>
+          <NavLink to="/ethereum-utils" end>Home</NavLink>
           <NavLink to="#">Features</NavLink>
           <NavLink to="#">Contact</NavLink>
         </div>

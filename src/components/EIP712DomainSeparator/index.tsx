@@ -5,7 +5,6 @@ function EIP712DomainSeparator({ domainSeparator, setDomainSeparator }: {
     setDomainSeparator: React.Dispatch<React.SetStateAction<EIP712Domain>>
 }) {
 
-    console.log(domainSeparator);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
