@@ -3,6 +3,7 @@ import './style.css';
 import EIP712DomainSeparator from '../../components/EIP712DomainSeparator';
 import EIP712MessageStruct from '../../components/EIP712MessageStruct';
 import EIP712MessageData from '../../components/EIP712MessageData';
+import EIP712ParamsAndSignature from '../../components/EIP712ParamsAndSignature';
 import type { EIP712Domain } from '../../utils/Account';
 import { useWeb3Context } from '../../hooks/useWeb3Context';
 
@@ -21,6 +22,21 @@ function EIP712() {
   const [message, setMessage] = useState<Record<string, any>>({});
   const [step, setStep] = useState(1);
 
+  const [paramsAndSignature, setParamsAndSignature] = useState<{ params: string, signature: string}>({params: "", signature: ""});
+
+  const reset = (params: string, signature: string) => {
+    setParamsAndSignature({ params, signature });
+    setDomainSeparator({
+      name: "",
+      version: "",
+      chainId: 0,
+      verifyingContract: ""
+    });
+    setTypedDataStructures({});
+    setPrimaryType("");
+    setMessage({});
+    setStep(0);
+  }
 
   const signing = async () => {
     try {
@@ -30,9 +46,7 @@ function EIP712() {
       if (!res[0] || !res[1]) {
         throw new Error("Signing failed");
       }
-
-      console.log(res[0]);
-      console.log(res[1]);
+      reset(res[0], res[1]);
     } catch(e: any) {
       console.error(e);
     }
@@ -67,6 +81,9 @@ function EIP712() {
       >
         View EIP712 Standard ↗
       </a>
+
+      {step == 0 && paramsAndSignature.params && paramsAndSignature.signature && <EIP712ParamsAndSignature params={paramsAndSignature.params} signature={paramsAndSignature.signature} setStep={setStep} setParamsAndSignature={setMessage}/>}
+
       {step == 1 && <EIP712DomainSeparator domainSeparator={domainSeparator} setDomainSeparator={setDomainSeparator} />}
       {step == 2 && <EIP712MessageStruct typedDataStructures={typedDataStructures} setTypedDataStructures={setTypedDataStructures}/>}
       {step == 3 && <EIP712MessageData 

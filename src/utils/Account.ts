@@ -106,19 +106,19 @@ class Account {
             if (nameType === "string") {
                 formattedMessage[name] = message[name];
             } else if (nameType === "address") {
-                const address = message[name];
+                const address = message[name].trim();
                 if (!isAddress(address)) {
                     throw new Error(`Invalid address for ${name}: ${address}`);
                 }
-                formattedMessage[name] = address.toLowerCase();
+                formattedMessage[name] = address;
             } else if (nameType.startsWith("bytes")) {
                 formattedMessage[name] = ethers.hexlify(ethers.toUtf8Bytes(message[name]));
             } else if (nameType.startsWith("uint")) {
-                const num = BigInt(message[name]);
+                const num = parseInt(message[name], 10);
                 if (num < 0) throw new Error(`Invalid value for ${name}: ${message[name]}`);
                 formattedMessage[name] = num;
             } else if (nameType.startsWith("int")) {
-                formattedMessage[name] = BigInt(message[name]);
+                formattedMessage[name] = parseInt(message[name], 10);
             } else if (nameType === "bool") {
                 formattedMessage[name] = Boolean(message[name]);
             } else {

@@ -99,8 +99,14 @@ function EIP712MessageStruct({
                   <option value="string">string</option>
                   <option value="address">address</option>
                   <option value="bytes">bytes</option>
-                  <option value="uint">uint[1-256]</option>
-                  <option value="int">int[1-256]</option>
+                  {Array.from({ length: 256 }, (_, i) => i + 1).map((i) => (
+                    <option key={i} value={`uint${i}`}>{`uint${i}`}</option>
+                  ))}
+
+                  {Array.from({ length: 256 }, (_, i) => i + 1).map((i) => (
+                    <option key={i} value={`int${i}`}>{`int${i}`}</option>
+                  ))}
+
                   <option value="bool">bool</option>
                   {Object.keys(typedDataStructures).map(type => {
                     if (type !== structName) {

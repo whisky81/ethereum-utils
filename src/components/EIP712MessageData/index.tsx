@@ -67,7 +67,7 @@ function StructFieldsRenderer({
           );
         }
 
-        if (type === "uint" || type === "int") {
+        if (type.startsWith("uint") || type.startsWith("int")) {
           return (
             <div key={index} className="data-input-field">
               <label>{name}</label>
@@ -123,7 +123,7 @@ function EIP712MessageData({
   primaryType,
   setPrimaryType,
   message,
-  setMessage
+  setMessage,
 }: {
   typedDataStructures: StructsMap;
   primaryType: string;
@@ -133,7 +133,6 @@ function EIP712MessageData({
 }) {
 
   const selectedStruct = typedDataStructures[primaryType];
-  console.log(message);
   return (
     <div className="eip712-message-data">
       <h3>Message Data</h3>
